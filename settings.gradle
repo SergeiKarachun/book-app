@@ -1,2 +1,5 @@
 rootProject.name = 'book-app'
 
+includeBuild 'eureka-server'
+includeBuild 'book-client'
+
