@@ -1,6 +1,6 @@
 package by.sergo.book.app.bookclient.domain.dto.user;
 
-import by.sergo.book.app.bookclient.domain.entity.UserDetails;
+import by.sergo.book.app.bookclient.domain.dto.userdetails.UserDetailsResponseDto;
 import by.sergo.book.app.bookclient.domain.model.Role;
 import lombok.Builder;
 import lombok.Value;
@@ -12,5 +12,5 @@ public class UserResponseDto {
     String username;
     String email;
     Role role;
-    UserDetails userDetails;
+    UserDetailsResponseDto userDetailsDto;
 }

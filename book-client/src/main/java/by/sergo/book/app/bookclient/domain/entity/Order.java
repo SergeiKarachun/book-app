@@ -38,4 +38,14 @@ public class Order {
     @Column(nullable = false)
     private LocalDate endRentalDate;
 
+    public void setUser(User user) {
+        this.user = user;
+        user.getOrders().add(this);
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+        user.getOrders().add(this);
+    }
+
 }

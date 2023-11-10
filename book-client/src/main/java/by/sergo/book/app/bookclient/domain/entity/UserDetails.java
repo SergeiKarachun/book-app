@@ -31,4 +31,9 @@ public class UserDetails {
 
     @Column(nullable = false)
     private String phone;
+
+    public void setUser(User user) {
+        user.setUserDetails(this);
+        this.user = user;
+    }
 }

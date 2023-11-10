@@ -7,7 +7,7 @@ import lombok.Value;
 @Builder
 public class UserDetailsResponseDto {
     Long id;
-    Long UserId;
+    Long userId;
     String name;
     String surname;
     String address;
