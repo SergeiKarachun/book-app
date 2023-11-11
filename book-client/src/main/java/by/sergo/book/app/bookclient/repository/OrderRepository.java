@@ -15,15 +15,17 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findAllByDateBetween(LocalDate start, LocalDate end);
 
     @Query(value = "SELECT o " +
-                   "FROM Order o " +
+                   "FROM orders o " +
                    "JOIN FETCH o.user u " +
-                   "WHERE u.id = :id")
+                   "WHERE u.id = :id",
+            nativeQuery = true)
     List<Order> findAllByUserId(@Param("id") Long id);
 
 
     @Query(value = "SELECT o " +
-                   "FROM Order o " +
+                   "FROM orders o " +
                    "JOIN FETCH o.book b " +
-                   "WHERE b.id = :id")
+                   "WHERE b.id = :id",
+    nativeQuery = true)
     List<Order> findAllByBookId(@Param("id") Long id);
 }
