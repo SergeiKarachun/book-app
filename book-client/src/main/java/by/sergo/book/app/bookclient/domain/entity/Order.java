@@ -45,7 +45,7 @@ public class Order {
 
     public void setBook(Book book) {
         this.book = book;
-        user.getOrders().add(this);
+        book.getOrders().add(this);
     }
 
 }

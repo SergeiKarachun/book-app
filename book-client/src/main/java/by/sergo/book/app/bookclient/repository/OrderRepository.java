@@ -16,7 +16,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query(value = "SELECT o " +
                    "FROM orders o " +
-                   "JOIN FETCH o.user u " +
+                   "JOIN users u ON o.user_id = u.id " +
                    "WHERE u.id = :id",
             nativeQuery = true)
     List<Order> findAllByUserId(@Param("id") Long id);
@@ -24,7 +24,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query(value = "SELECT o " +
                    "FROM orders o " +
-                   "JOIN FETCH o.book b " +
+                   "JOIN book b ON o.book_id = b.id " +
                    "WHERE b.id = :id",
     nativeQuery = true)
     List<Order> findAllByBookId(@Param("id") Long id);

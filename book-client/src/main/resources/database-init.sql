@@ -60,8 +60,8 @@ CREATE TABLE IF NOT EXISTS orders
     date              DATE   NOT NULL DEFAULT now(),
     book_id           BIGINT NOT NULL UNIQUE,
     user_id           BIGINT NOT NULL UNIQUE,
-    start_rental_time DATE   NOT NULL,
-    end_rental_time   DATE   NOT NULL,
+    start_rental_date DATE   NOT NULL,
+    end_rental_date   DATE   NOT NULL,
     CONSTRAINT order_book_fk FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT order_user_fk FOREIGN KEY (user_id) REFERENCES users (id)
         ON UPDATE CASCADE

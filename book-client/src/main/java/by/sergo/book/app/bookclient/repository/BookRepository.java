@@ -19,14 +19,14 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query(value = "SELECT count(o.id) = 0 " +
                    "FROM orders o " +
                    "JOIN book b on o.book_id = b.id " +
-                   "WHERE b.id = :id AND o.start_rental_time <= :endDate AND o.end_rental_time >= :startDate",
+                   "WHERE b.id = :id AND o.start_rental_date <= :endDate AND o.end_rental_date >= :startDate",
             nativeQuery = true)
     boolean isBookAvailable(@Param("id") Long id, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
     @Query(value = "SELECT count(o.id) = 0 " +
                    "FROM orders o " +
                    "JOIN book b on o.book_id = b.id " +
-                   "WHERE b.id = :id AND o.id != :orderId AND o.start_rental_time <= :endDate AND o.end_rental_time >= :startDate",
+                   "WHERE b.id = :id AND o.id != :orderId AND o.start_rental_date <= :endDate AND o.end_rental_date >= :startDate",
             nativeQuery = true)
     boolean isBookAvailableByOrderId(@Param("orderId") Long orderId, @Param("id") Long id, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
