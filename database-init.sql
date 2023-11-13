@@ -78,6 +78,24 @@ CREATE TABLE IF NOT EXISTS library
     genre             VARCHAR(128) NOT NULL,
     author            VARCHAR(255) NOT NULL,
     description       VARCHAR(255),
-    start_rental_time date,
-    end_rental_time   date
+    start_rental_date DATE,
+    end_rental_date   DATE
+);
+
+
+--IdBook
+CREATE TABLE IF NOT EXISTS idbook
+(
+    id     BIGSERIAL primary key,
+    bookid BIGINT NOT NULL UNIQUE
+);
+
+--RentalDate
+CREATE TABLE IF NOT EXISTS rental_date
+(
+  id BIGSERIAL PRIMARY KEY,
+  start_rental_date DATE,
+  end_rental_date DATE,
+  idbook_id BIGINT NOT NULL UNIQUE,
+  CONSTRAINT rental_date_bookid_fk FOREIGN KEY (idbook_id) references idbook(id)
 );
