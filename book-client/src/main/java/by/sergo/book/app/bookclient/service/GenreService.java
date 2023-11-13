@@ -29,7 +29,7 @@ public class GenreService {
 
     @Transactional
     public Optional<GenreResponseDto> create(GenreCreateUpdateRequestDto dto) {
-        checkUniqueGenreName(dto.getName());
+        checkUniqueGenreName(dto.name());
 
         return Optional.of(genreCreateMapper.mapToEntity(dto))
                 .map(genreRepository::saveAndFlush)
@@ -40,8 +40,8 @@ public class GenreService {
     public Optional<GenreResponseDto> update(Long id, GenreCreateUpdateRequestDto dto) {
         var genre = getByIdOrElseThrow(id);
 
-        if (!genre.getName().equals(dto.getName())) {
-            checkUniqueGenreName(dto.getName());
+        if (!genre.getName().equals(dto.name())) {
+            checkUniqueGenreName(dto.name());
         }
 
         return Optional.of(genreUpdateMapper.mapToEntity(dto, getByIdOrElseThrow(id)))

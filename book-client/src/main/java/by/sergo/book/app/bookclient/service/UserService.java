@@ -34,7 +34,7 @@ public class UserService {
         checkUsernameIsUnique(dto.getUsername());
 
         return Optional.of(userCreateMapper.mapToEntity(dto))
-                .map(userRepository::saveAndFlush)
+                .map(userRepository::save)
                 .map(userResponseMapper::mapToDto);
     }
 

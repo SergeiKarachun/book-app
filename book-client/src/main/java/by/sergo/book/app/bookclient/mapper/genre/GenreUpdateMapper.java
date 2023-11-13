@@ -15,6 +15,6 @@ public class GenreUpdateMapper implements UpdateMapper<GenreCreateUpdateRequestD
 
     @Override
     public void merge(GenreCreateUpdateRequestDto dto, Genre entity) {
-        entity.setName(dto.getName());
+        entity.setName(dto.name());
     }
 }

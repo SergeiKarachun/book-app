@@ -12,7 +12,7 @@ public class GenreCreateMapper implements CreateMapper<GenreCreateUpdateRequestD
     @Override
     public Genre mapToEntity(GenreCreateUpdateRequestDto requestDto) {
         return Genre.builder()
-                .name(requestDto.getName())
+                .name(requestDto.name())
                 .build();
     }
 }

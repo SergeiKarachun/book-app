@@ -19,7 +19,7 @@ public class UserCreateMapper implements CreateMapper<UserCreateRequestDto, User
                 .email(requestDto.getEmail())
                 .password(requestDto.getPassword())
                 .build();
-        user.setUserDetails(userDetails);
+        userDetails.setUser(user);
         return user;
     }
 }
