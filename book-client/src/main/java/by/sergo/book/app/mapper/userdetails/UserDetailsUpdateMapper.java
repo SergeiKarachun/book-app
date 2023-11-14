@@ -1,0 +1,23 @@
+package by.sergo.book.app.mapper.userdetails;
+
+import by.sergo.book.app.domain.dto.userdetails.UserDetailsUpdateRequestDto;
+import by.sergo.book.app.domain.entity.UserDetails;
+import by.sergo.book.app.mapper.UpdateMapper;
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserDetailsUpdateMapper implements UpdateMapper<UserDetailsUpdateRequestDto, UserDetails> {
+    @Override
+    public UserDetails mapToEntity(UserDetailsUpdateRequestDto dto, UserDetails entity) {
+        merge(dto, entity);
+        return entity;
+    }
+
+    @Override
+    public void merge(UserDetailsUpdateRequestDto dto, UserDetails entity) {
+        entity.setName(dto.getName());
+        entity.setSurname(dto.getSurname());
+        entity.setAddress(dto.getAddress());
+        entity.setPhone(dto.getPhone());
+    }
+}

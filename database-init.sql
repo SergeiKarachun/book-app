@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS orders
 (
     id                BIGSERIAL PRIMARY KEY,
     date              DATE   NOT NULL DEFAULT now(),
-    book_id           BIGINT NOT NULL UNIQUE,
-    user_id           BIGINT NOT NULL UNIQUE,
+    book_id           BIGINT NOT NULL,
+    user_id           BIGINT NOT NULL,
     start_rental_date DATE   NOT NULL,
     end_rental_date   DATE   NOT NULL,
     CONSTRAINT order_book_fk FOREIGN KEY (book_id) REFERENCES book (id),
@@ -67,21 +67,6 @@ CREATE TABLE IF NOT EXISTS orders
         ON UPDATE CASCADE
         ON DELETE SET NULL
 );
-
---Library
-CREATE TABLE IF NOT EXISTS library
-(
-    id                BIGSERIAL PRIMARY KEY,
-    book_id           BIGINT       NOT NULL,
-    isbn              BIGINT       NOT NULL,
-    name              VARCHAR(255) NOT NULL,
-    genre             VARCHAR(128) NOT NULL,
-    author            VARCHAR(255) NOT NULL,
-    description       VARCHAR(255),
-    start_rental_date DATE,
-    end_rental_date   DATE
-);
-
 
 --IdBook
 CREATE TABLE IF NOT EXISTS idbook
@@ -96,6 +81,7 @@ CREATE TABLE IF NOT EXISTS rental_date
   id BIGSERIAL PRIMARY KEY,
   start_rental_date DATE,
   end_rental_date DATE,
-  idbook_id BIGINT NOT NULL UNIQUE,
+  idbook_id BIGINT NOT NULL,
+  order_id BIGINT NOT NULL,
   CONSTRAINT rental_date_bookid_fk FOREIGN KEY (idbook_id) references idbook(id)
 );
