@@ -25,10 +25,10 @@ public class AuthConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/auth/register", "/auth/token", "/auth/validate").permitAll()
-                .and()
+        return http
+                .csrf((csrf) -> csrf.disable())
+                .authorizeHttpRequests(urlConfig -> urlConfig
+                        .requestMatchers("/login", "/users/sign-up", "/v3/api-docs/**", "/swagger-ui/**", "/api/v1/cars{\\d+}/car_image").permitAll())
                 .build();
     }
 

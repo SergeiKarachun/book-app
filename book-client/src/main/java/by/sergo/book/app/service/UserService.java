@@ -12,10 +12,8 @@ import by.sergo.book.app.service.exception.BadRequestException;
 import by.sergo.book.app.service.exception.ExceptionMessageUtil;
 import by.sergo.book.app.service.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;

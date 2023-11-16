@@ -2,7 +2,6 @@ package by.sergo.identityservice.controller;
 
 import by.sergo.identityservice.domain.dto.AuthRequest;
 import by.sergo.identityservice.domain.dto.UserCredentialCreateRequestDto;
-import by.sergo.identityservice.domain.entity.UserCredential;
 import by.sergo.identityservice.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
