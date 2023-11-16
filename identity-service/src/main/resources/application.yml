@@ -1,9 +1,8 @@
 server:
-#  forward-headers-strategy: framework
-  port: 8081
+  port: 9898
 spring:
   application:
-    name: BOOK-SERVICE
+    name:   IDENTITY-SERVICE
   datasource:
     url: jdbc:postgresql://localhost:5433/postgres
     username: postgres
@@ -15,6 +14,7 @@ spring:
         show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
+
         hbm2ddl.auto: validate
     open-in-view: false
   mvc:
@@ -22,18 +22,7 @@ spring:
       date: iso
       date-time: iso
       time: iso
-  kafka:
-    producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      properties:
-        spring:
-          json:
-            trusted:
-#              packages: by.sergo.book.app.domain.dto.*
-
 eureka:
   client:
     service-url:
-      defaultZone : http://localhost:8761/eureka/
+      defaultZone : http://localhost:8761/eureka

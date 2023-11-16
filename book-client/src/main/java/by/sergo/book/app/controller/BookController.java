@@ -36,7 +36,7 @@ public class BookController {
                 .orElseThrow(() -> new NotFoundException(String.format("Book with id %s doesn't exist", id)));
     }
 
-    @GetMapping("/{isbn}")
+    @GetMapping("/isbn/{isbn}")
     @Operation(summary = "Get book by isbn")
     public BookResponseDto getByIsbn(@PathVariable("isbn") Long isbn) {
         return bookService.getByIsbn(isbn)
@@ -47,6 +47,12 @@ public class BookController {
     @Operation(summary = "Get all books")
     public List<BookResponseDto> getAll() {
         return bookService.getAll();
+    }
+
+    @GetMapping("/free")
+    @Operation(summary = "Get a list of free books")
+    private List<BookResponseDto> getFreeBooks() {
+        return bookService.getAllFreeBooks();
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)

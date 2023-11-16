@@ -78,10 +78,12 @@ CREATE TABLE IF NOT EXISTS idbook
 --RentalDate
 CREATE TABLE IF NOT EXISTS rental_date
 (
-  id BIGSERIAL PRIMARY KEY,
-  start_rental_date DATE,
-  end_rental_date DATE,
-  idbook_id BIGINT NOT NULL,
-  order_id BIGINT NOT NULL,
-  CONSTRAINT rental_date_bookid_fk FOREIGN KEY (idbook_id) references idbook(id)
+    id                BIGSERIAL PRIMARY KEY,
+    start_rental_date DATE,
+    end_rental_date   DATE,
+    idbook_id         BIGINT NOT NULL,
+    order_id          BIGINT NOT NULL,
+    CONSTRAINT rental_date_bookid_fk FOREIGN KEY (idbook_id) references idbook (id)
 );
+
+

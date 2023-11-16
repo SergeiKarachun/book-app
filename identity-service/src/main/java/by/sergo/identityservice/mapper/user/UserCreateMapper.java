@@ -1,22 +1,22 @@
-package by.sergo.book.app.mapper.user;
+package by.sergo.identityservice.mapper.user;
 
-import by.sergo.book.app.domain.dto.user.UserCreateRequestDto;
-import by.sergo.book.app.domain.entity.User;
-import by.sergo.book.app.mapper.CreateMapper;
+import by.sergo.identityservice.mapper.CreateMapper;
+import by.sergo.identityservice.domain.dto.UserCredentialCreateRequestDto;
+import by.sergo.identityservice.domain.entity.UserCredential;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class UserCreateMapper implements CreateMapper<UserCreateRequestDto, User> {
+public class UserCreateMapper implements CreateMapper<UserCredentialCreateRequestDto, UserCredential> {
 
     private final UserDetailsFromUserCreateMapper userDetailsCreateMapper;
     private final PasswordEncoder passwordEncoder;
     @Override
-    public User mapToEntity(UserCreateRequestDto requestDto) {
+    public UserCredential mapToEntity(UserCredentialCreateRequestDto requestDto) {
         var userDetails = userDetailsCreateMapper.mapToEntity(requestDto);
-        var user = User.builder()
+        var user = UserCredential.builder()
                 .username(requestDto.getUsername())
                 .email(requestDto.getEmail())
                 .password(passwordEncoder.encode(requestDto.getPassword()))

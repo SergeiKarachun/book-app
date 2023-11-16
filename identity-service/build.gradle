@@ -11,6 +11,12 @@ java {
 	sourceCompatibility = '17'
 }
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 repositories {
 	mavenCentral()
 }
@@ -20,17 +26,16 @@ ext {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.5'
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.0.4'
 	implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.0'
 	compileOnly 'org.projectlombok:lombok:1.18.30'
+	runtimeOnly 'org.postgresql:postgresql:42.6.0'
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.5'
-	implementation 'org.postgresql:postgresql:42.6.0'
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-	implementation 'com.fasterxml.jackson.core:jackson-core:2.15.3'
-	implementation 'org.springframework.kafka:spring-kafka:3.0.12'
-
-
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 }
 
 dependencyManagement {
@@ -38,4 +43,3 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
-

@@ -68,6 +68,14 @@ public class BookService {
                 .toList();
     }
 
+
+    public List<BookResponseDto> getAllFreeBooks() {
+        return bookRepository.findAllFree()
+                .stream()
+                .map(bookResponseMapper::mapToDto)
+                .toList();
+    }
+
     @Transactional
     public boolean deleteById(Long id) {
         if (bookRepository.existsById(id)){
@@ -77,7 +85,7 @@ public class BookService {
                     .eventType("DeleteBook")
                     .bookId(id)
                     .build();
-            kafkaTemplate.send("order-event-topic", orderEvent);
+            kafkaTemplate.send("book-event-topic", orderEvent);
             return true;
         }
         return false;

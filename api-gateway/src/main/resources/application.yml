@@ -1,0 +1,82 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+       - id: orders
+         uri: lb://BOOK-SERVICE
+         predicates:
+          - Path=/api/v1/orders/**
+         filters:
+          - AuthenticationFilter
+
+       - id: authors
+         uri: lb://BOOK-SERVICE
+         predicates:
+           - Path=/api/v1/authors/**
+         filters:
+           - AuthenticationFilter
+
+       - id: books
+         uri: lb://BOOK-SERVICE
+         predicates:
+           - Path=/api/v1/books/**
+         filters:
+           - AuthenticationFilter
+
+       - id: genres
+         uri: lb://BOOK-SERVICE
+         predicates:
+           - Path=/api/v1/genres/**
+         filters:
+           - AuthenticationFilter
+
+       - id: users
+         uri: lb://BOOK-SERVICE
+         predicates:
+           - Path=/api/v1/users/**
+         filters:
+           - AuthenticationFilter
+
+       - id: userdetails
+         uri: lb://BOOK-SERVICE
+         predicates:
+           - Path=/api/v1/userdetails/**
+         filters:
+           - AuthenticationFilter
+
+       - id: idbooks
+         uri: lb://LIBRARY-SERVICE
+         predicates:
+          - Path=/api/v1/idbooks/**
+         filters:
+          - AuthenticationFilter
+
+       - id: rentaldates
+         uri: lb://LIBRARY-SERVICE
+         predicates:
+           - Path=/api/v1/rentaldates/**
+         filters:
+           - AuthenticationFilter
+
+       - id: identity
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+          - Path=/auth/**
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+
+#      spring.cloud.gateway.discovery.locator.enabled=true
+#      spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+
+

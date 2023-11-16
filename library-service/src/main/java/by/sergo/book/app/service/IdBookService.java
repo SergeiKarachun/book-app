@@ -46,7 +46,7 @@ public class IdBookService {
         }
 
         if (bookEvent.getEventType().equals("DeleteBook")) {
-            idBookRepository.deleteByIdBookId(bookEvent.getBookId());
+            idBookRepository.deleteByBookId(bookEvent.getBookId());
         }
     }
 

@@ -3,4 +3,6 @@ rootProject.name = 'book-app'
 includeBuild 'eureka-server'
 includeBuild 'book-client'
 includeBuild 'api-gateway'
+includeBuild 'library-service'
+includeBuild 'identity-service'
 
