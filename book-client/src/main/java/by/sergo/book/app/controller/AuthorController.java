@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/authors")
 @RequiredArgsConstructor
+@CrossOrigin
 public class AuthorController {
 
     private final AuthorService authorService;

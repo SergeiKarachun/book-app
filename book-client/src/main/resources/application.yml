@@ -1,5 +1,5 @@
 server:
-#  forward-headers-strategy: framework
+  forward-headers-strategy: framework
   port: 8081
 spring:
   application:
@@ -32,7 +32,11 @@ spring:
           json:
             trusted:
 #              packages: by.sergo.book.app.domain.dto.*
-
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
 eureka:
   client:
     service-url:

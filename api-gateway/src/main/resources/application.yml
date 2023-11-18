@@ -6,61 +6,27 @@ spring:
   cloud:
     gateway:
       routes:
-       - id: orders
+
+
+
+       - id: api-docs
+         uri: lb://API-GATEWAY
+         predicates:
+           - Path=/v3/api-docs
+
+       - id: book-service
          uri: lb://BOOK-SERVICE
          predicates:
-          - Path=/api/v1/orders/**
+          - Path=/v3/api-docs/*, /api/v1/orders/**, /api/v1/authors/**, /api/v1/books/**, /api/v1/genres/**, /api/v1/users/**, /api/v1/userdetails/**
          filters:
           - AuthenticationFilter
 
-       - id: authors
-         uri: lb://BOOK-SERVICE
-         predicates:
-           - Path=/api/v1/authors/**
-         filters:
-           - AuthenticationFilter
-
-       - id: books
-         uri: lb://BOOK-SERVICE
-         predicates:
-           - Path=/api/v1/books/**
-         filters:
-           - AuthenticationFilter
-
-       - id: genres
-         uri: lb://BOOK-SERVICE
-         predicates:
-           - Path=/api/v1/genres/**
-         filters:
-           - AuthenticationFilter
-
-       - id: users
-         uri: lb://BOOK-SERVICE
-         predicates:
-           - Path=/api/v1/users/**
-         filters:
-           - AuthenticationFilter
-
-       - id: userdetails
-         uri: lb://BOOK-SERVICE
-         predicates:
-           - Path=/api/v1/userdetails/**
-         filters:
-           - AuthenticationFilter
-
-       - id: idbooks
+       - id: library-service
          uri: lb://LIBRARY-SERVICE
          predicates:
-          - Path=/api/v1/idbooks/**
+          - Path=/api/v1/idbooks/**, /api/v1/rentaldates/**
          filters:
           - AuthenticationFilter
-
-       - id: rentaldates
-         uri: lb://LIBRARY-SERVICE
-         predicates:
-           - Path=/api/v1/rentaldates/**
-         filters:
-           - AuthenticationFilter
 
        - id: identity
          uri: lb://IDENTITY-SERVICE
@@ -70,11 +36,39 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /v3/api-docs
+        name: API Gateway Service
+        primaryName: API Gateway Service
+      - url: /book-service/v3/api-docs
+        name: Book Service
+        primaryName: Book Service
+      - url: /library-service/v3/api-docs
+        name: Library Service
+        primaryName: Library Service
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud.gateway: info
+
+
 
 eureka:
   client:
     service-url:
       defaultZone : http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
 
 #      spring.cloud.gateway.discovery.locator.enabled=true
 #      spring.cloud.gateway.discovery.locator.lower-case-service-id=true

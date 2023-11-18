@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/idbooks")
 @RequiredArgsConstructor
+@CrossOrigin
 public class IdBookController {
 
     private final IdBookService idBookService;
