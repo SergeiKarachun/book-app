@@ -24,14 +24,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Create new user")
-    public UserResponseDto create(@RequestBody UserCreateRequestDto dto) {
-        return userService.create(dto)
-                .orElseThrow(() -> new BadRequestException("Can't create new user, please check input parameters"));
-    }
-
     @GetMapping("/{id}")
     @Operation(summary = "Get user by id")
     public UserResponseDto getById(@PathVariable("id") Long id) {

@@ -3,7 +3,10 @@ package by.sergo.identityservice.controller;
 import by.sergo.identityservice.domain.dto.AuthRequest;
 import by.sergo.identityservice.domain.dto.usercredential.UserCreateRequestDto;
 import by.sergo.identityservice.service.AuthService;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -11,14 +14,17 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
-    @Autowired
-    private AuthService service;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthService service;
 
-    @PostMapping("/register")
+
+    private final AuthenticationManager authenticationManager;
+
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Create new user")
     public String addNewUser(@RequestBody UserCreateRequestDto user) {
         return service.saveUser(user);
     }
