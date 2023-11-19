@@ -1,10 +1,10 @@
-package by.sergo.identityservice.domain.dto;
+package by.sergo.identityservice.domain.dto.usercredential;
 
 import lombok.Value;
 
 
 @Value
-public class UserCredentialCreateRequestDto {
+public class UserCreateRequestDto {
     String username;
     String email;
     String password;

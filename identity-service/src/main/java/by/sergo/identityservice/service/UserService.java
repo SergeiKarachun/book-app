@@ -1,16 +1,17 @@
-package by.sergo.book.app.service;
+package by.sergo.identityservice.service;
 
-import by.sergo.book.app.domain.dto.user.UserCreateRequestDto;
-import by.sergo.book.app.domain.dto.user.UserResponseDto;
-import by.sergo.book.app.domain.dto.user.UserUpdateRequestDto;
-import by.sergo.book.app.domain.entity.User;
-import by.sergo.book.app.mapper.user.UserCreateMapper;
-import by.sergo.book.app.mapper.user.UserResponseMapper;
-import by.sergo.book.app.mapper.user.UserUpdateMapper;
-import by.sergo.book.app.repository.UserRepository;
-import by.sergo.book.app.service.exception.BadRequestException;
-import by.sergo.book.app.service.exception.ExceptionMessageUtil;
-import by.sergo.book.app.service.exception.NotFoundException;
+
+import by.sergo.identityservice.domain.dto.usercredential.UserCreateRequestDto;
+import by.sergo.identityservice.domain.dto.usercredential.UserResponseDto;
+import by.sergo.identityservice.domain.dto.usercredential.UserUpdateRequestDto;
+import by.sergo.identityservice.domain.entity.User;
+import by.sergo.identityservice.mapper.user.UserCreateMapper;
+import by.sergo.identityservice.mapper.user.UserResponseMapper;
+import by.sergo.identityservice.mapper.user.UserUpdateMapper;
+import by.sergo.identityservice.repository.UserRepository;
+import by.sergo.identityservice.service.exception.ExceptionMessageUtil;
+import by.sergo.identityservice.service.exception.NotFoundException;
+import jakarta.ws.rs.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,7 +41,7 @@ public class UserService {
 
     @Transactional
     public Optional<UserResponseDto> update(Long id, UserUpdateRequestDto dto) {
-        var user = getByIdOrElseThrow(id);
+        User user = getByIdOrElseThrow(id);
 
         if (!user.getEmail().equals(dto.getEmail())) {
             checkEmailIsUnique(dto.getEmail());

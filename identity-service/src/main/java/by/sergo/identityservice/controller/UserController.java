@@ -1,20 +1,18 @@
-package by.sergo.book.app.controller;
+package by.sergo.identityservice.controller;
 
-import by.sergo.book.app.domain.dto.user.UserCreateRequestDto;
-import by.sergo.book.app.domain.dto.user.UserResponseDto;
-import by.sergo.book.app.domain.dto.user.UserUpdateRequestDto;
-import by.sergo.book.app.service.UserService;
-import by.sergo.book.app.service.exception.BadRequestException;
-import by.sergo.book.app.service.exception.NotFoundException;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+
+import by.sergo.identityservice.domain.dto.usercredential.UserCreateRequestDto;
+import by.sergo.identityservice.domain.dto.usercredential.UserResponseDto;
+import by.sergo.identityservice.domain.dto.usercredential.UserUpdateRequestDto;
+import by.sergo.identityservice.service.UserService;
+import by.sergo.identityservice.service.exception.BadRequestException;
+import by.sergo.identityservice.service.exception.NotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 

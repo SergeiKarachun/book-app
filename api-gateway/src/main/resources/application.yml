@@ -8,16 +8,10 @@ spring:
       routes:
 
 
-
-       - id: api-docs
-         uri: lb://API-GATEWAY
-         predicates:
-           - Path=/v3/api-docs
-
        - id: book-service
          uri: lb://BOOK-SERVICE
          predicates:
-          - Path=/v3/api-docs/*, /api/v1/orders/**, /api/v1/authors/**, /api/v1/books/**, /api/v1/genres/**, /api/v1/users/**, /api/v1/userdetails/**
+          - Path=/v3/api-docs/*, /api/v1/orders/**, /api/v1/authors/**, /api/v1/books/**, /api/v1/genres/**
          filters:
           - AuthenticationFilter
 
@@ -31,7 +25,10 @@ spring:
        - id: identity
          uri: lb://IDENTITY-SERVICE
          predicates:
-          - Path=/auth/**
+          - Path=/auth/**, /api/v1/users/**, /api/v1/userdetails/**
+         filters:
+          - AuthenticationFilter
+
       discovery:
         locator:
           enabled: true
@@ -54,6 +51,9 @@ springdoc:
       - url: /library-service/v3/api-docs
         name: Library Service
         primaryName: Library Service
+      - url: /identity-service/v3/api-docs
+        name: Identity Service
+        primaryName: Identity Service
 
 logging:
   level:

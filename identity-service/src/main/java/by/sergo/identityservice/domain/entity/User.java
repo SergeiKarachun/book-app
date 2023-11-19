@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table(name = "users")
-public class UserCredential {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

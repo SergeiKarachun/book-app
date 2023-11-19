@@ -2,7 +2,6 @@ package by.sergo.identityservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -28,7 +27,7 @@ public class AuthConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeRequests(urlConfig -> urlConfig
-                        .requestMatchers("/auth/register", "/auth/token", "/auth/validate").permitAll())
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/auth/register", "/auth/token", "/auth/validate").permitAll())
                 .build();
     }
 

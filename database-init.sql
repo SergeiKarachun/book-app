@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS book
     name        varchar(255) NOT NULL,
     genre_id    BIGINT       NOT NULL,
     author_id   BIGINT       NOT NULL,
-    description VARCHAR(255),
+    description VARCHAR(1024),
     CONSTRAINT book_genre_fk FOREIGN KEY (genre_id) REFERENCES author (id)
         ON UPDATE CASCADE
         ON DELETE SET NULL

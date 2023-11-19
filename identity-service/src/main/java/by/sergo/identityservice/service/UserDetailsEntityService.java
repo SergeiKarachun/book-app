@@ -1,17 +1,18 @@
-package by.sergo.book.app.service;
+package by.sergo.identityservice.service;
 
-import by.sergo.book.app.domain.dto.userdetails.UserDetailsCreateRequestDto;
-import by.sergo.book.app.domain.dto.userdetails.UserDetailsResponseDto;
-import by.sergo.book.app.domain.dto.userdetails.UserDetailsUpdateRequestDto;
-import by.sergo.book.app.domain.entity.User;
-import by.sergo.book.app.domain.entity.UserDetails;
-import by.sergo.book.app.mapper.userdetails.UserDetailsCreateMapper;
-import by.sergo.book.app.mapper.userdetails.UserDetailsResponseMapper;
-import by.sergo.book.app.mapper.userdetails.UserDetailsUpdateMapper;
-import by.sergo.book.app.repository.UserDetailsRepository;
-import by.sergo.book.app.repository.UserRepository;
-import by.sergo.book.app.service.exception.ExceptionMessageUtil;
-import by.sergo.book.app.service.exception.NotFoundException;
+
+import by.sergo.identityservice.domain.dto.userdetails.UserDetailsCreateRequestDto;
+import by.sergo.identityservice.domain.dto.userdetails.UserDetailsResponseDto;
+import by.sergo.identityservice.domain.dto.userdetails.UserDetailsUpdateRequestDto;
+import by.sergo.identityservice.domain.entity.User;
+import by.sergo.identityservice.domain.entity.UserDetails;
+import by.sergo.identityservice.mapper.userdetails.UserDetailsCreateMapper;
+import by.sergo.identityservice.mapper.userdetails.UserDetailsResponseMapper;
+import by.sergo.identityservice.mapper.userdetails.UserDetailsUpdateMapper;
+import by.sergo.identityservice.repository.UserDetailsRepository;
+import by.sergo.identityservice.repository.UserRepository;
+import by.sergo.identityservice.service.exception.ExceptionMessageUtil;
+import by.sergo.identityservice.service.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class UserDetailsService {
+public class UserDetailsEntityService {
 
     private final UserRepository userRepository;
     private final UserDetailsRepository userDetailsRepository;

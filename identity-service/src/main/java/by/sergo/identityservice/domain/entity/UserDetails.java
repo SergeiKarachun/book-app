@@ -18,7 +18,7 @@ public class UserDetails {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserCredential user;
+    private User user;
 
     @Column(nullable = false)
     private String name;
@@ -32,7 +32,7 @@ public class UserDetails {
     @Column(nullable = false)
     private String phone;
 
-    public void setUser(UserCredential user) {
+    public void setUser(User user) {
         user.setUserDetails(this);
         this.user = user;
     }
